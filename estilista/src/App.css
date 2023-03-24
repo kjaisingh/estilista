@@ -1,38 +1,101 @@
+@import "@font/nunito";
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 400px;
+  height: 700px;
+  border: 1px solid black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.captionText {
+  font-weight: light;
+  opacity: 60%;
+  font-size: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+hr {
+  width: 70%;
+}
+
+p {
+  font-family: var(--fontFamily-nunito);
+  color: black;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.logo {
+  padding-top: 5px;
+  height: 17vmin;
+}
+
+.outfit {
+  padding-top: 5px;
+  height: 20vmin;
+}
+
+.navBar {
+  height: 50px;
+  width: 400px;
+  background-color: #E86252;
+}
+
+.unselectedIcon {
+  opacity: 0.6;
+}
+
+.feedItem {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.feedBody {
+  height: 590px;
+  width: 400px;
+  background-color: white;
+}
+
+.rowIcon {
+  padding-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 20px;
+  color: black;
+}
+
+.footer {
+  height: 60px;
+  width: 400px;
+  background-color: #E86252;
+}
+
+.footerIcon {
+  padding-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 28px;
+}
+
+.roundButton {
+  border: none;
+  background-color: white;
+  color: #E86252;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 50px 10px;
+  font-family: var(--fontFamily-nunito);
+  border-radius: 16px;
+}
+
+.App-link {
+  color: #61dafb;
 }
