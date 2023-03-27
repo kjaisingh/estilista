@@ -1,5 +1,7 @@
 import './Feed.css';
 
+import { useNavigate } from 'react-router-dom';
+
 import logo from './logo-white.png';
 import outfit1 from './outfit1.png';
 import outfit2 from './outfit2.png';
@@ -7,12 +9,13 @@ import outfit2 from './outfit2.png';
 import { FaHome } from "react-icons/fa"
 import { FaSearch } from "react-icons/fa"
 import { FaTshirt } from "react-icons/fa"
-
 import { FaHeart } from "react-icons/fa"
 import { FaRegComment } from "react-icons/fa"
 
 
 function Feed() {
+  const navigate = useNavigate();
+
   return (
     <div className="App">
       <div className="navBar">
@@ -41,7 +44,7 @@ function Feed() {
 
       </div>
       <div className="footer">
-        <FaHome class="footerIcon"/> <FaSearch class="footerIcon unselectedIcon"/> <FaTshirt class="footerIcon unselectedIcon"/>
+        <FaHome class="footerIcon" onClick={ ()=> navigate('/feed') }/> <FaSearch class="footerIcon unselectedIcon" onClick={ ()=> navigate('/outfits') }/> <FaTshirt class="footerIcon unselectedIcon" onClick={ ()=> navigate('/wardrobe') }/>
       </div>
     </div>
   );

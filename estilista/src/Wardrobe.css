@@ -1,0 +1,49 @@
+@import "@font/nunito";
+
+p {
+  font-family: var(--fontFamily-nunito);
+}
+
+input {
+  width: 300px;
+}
+
+.roundButton {
+  border: none;
+  background-color: white;
+  color: #E86252;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 50px 10px;
+  font-family: var(--fontFamily-nunito);
+  border-radius: 16px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 30vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  width: 400px;
+  height: 700px;
+  border: 1px solid black;
+  background-color: #E86252;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
