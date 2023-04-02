@@ -1,16 +1,20 @@
 import logo from './logo-white.png';
+
 import beanie from './beanie.png';
 import boot from './boot.png';
 import tracksuit from './tracksuit.png';
 import tshirt from './tshirt.png';
 
-import shirt1 from './shirt1.jpeg';
-import shirt2 from './shirt2.jpeg';
-import shirt3 from './shirt3.jpeg';
-import shirt4 from './shirt4.jpeg';
-import shirt5 from './shirt5.webp';
-import shirt6 from './shirt6.avif';
-import shirt7 from './shirt7.jpeg';
+import addIcon from './addIcon.png';
+
+import shirt1 from './shirts/shirt1.png';
+import shirt2 from './shirts/shirt2.png';
+import shirt3 from './shirts/shirt3.png';
+import shirt4 from './shirts/shirt4.png';
+import shirt5 from './shirts/shirt5.png';
+import shirt6 from './shirts/shirt6.png';
+import shirt7 from './shirts/shirt7.png';
+import shirt8 from './shirts/shirt8.png';
 
 import './Wardrobe.css';
 import { useNavigate } from 'react-router-dom';
@@ -28,20 +32,27 @@ function Wardrobe() {
         <img src={logo} className="logo"/>
       </div>
 
+      <div className="titleBlock">
+        <h3>
+          Your Wardrobe
+        </h3>
+        {/* <img src={addIcon}/> */}
+      </div>
+
       <div className="clothingType">
         <table>
           <tr>
             <td>
-              <img src={tshirt} className="tshirt"/>
+              <img src={tshirt} className="selectedIcon"/>
             </td>
             <td>
-              <img src={tracksuit} className="tracksuit"/>
+              <img src={tracksuit} className="unselectedIcon"/>
             </td>
             <td>
-              <img src={boot} className="boot"/>
+              <img src={boot} className="unselectedIcon"/>
             </td>
             <td>
-              <img src={beanie} className="beanie"/>
+              <img src={beanie} className="unselectedIcon"/>
             </td>
           </tr>
         </table>
@@ -76,11 +87,9 @@ function Wardrobe() {
               <img src={shirt7} className="shirt"/>
             </td>
             <td>
-              <img src={shirt1} className="shirt"/>
+              <img src={shirt8} className="shirt"/>
             </td>
-            <td>
-              <img src={shirt1} className="shirt"/>
-            </td>
+            <td></td>
           </tr>
         </table>
       </div>

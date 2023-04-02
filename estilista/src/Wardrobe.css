@@ -4,8 +4,16 @@ p {
   font-family: var(--fontFamily-nunito);
 }
 
-input {
-  width: 300px;
+.titleBlock {
+  color: black;
+}
+
+.titleBlock h3 {
+  margin: 0;
+}
+
+.unselectedIcon {
+  opacity: 0.4;
 }
 
 .clothingType img {
@@ -13,35 +21,25 @@ input {
 }
 
 .clothesList img {
-  max-width: 30%;
-  max-height: 30%;
+  max-width: 100%;
+}
+
+.addIcon {
+  max-width: 5vmin;
+  align-items: right;
 }
 
 .clothesList table, .clothesList td, .clothesList tr {
-  border: 3px solid black;
+  border: 4px solid #EBB3A9;
   border-collapse: collapse;
 }
 
-.clothesList tr {
-  height: 30%;
+.clothesList table {
+  width: 100%;
 }
 
 .clothesList td {
-  width: 30%;
-}
-
-.roundButton {
-  border: none;
-  background-color: white;
-  color: #E86252;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 50px 10px;
-  font-family: var(--fontFamily-nunito);
-  border-radius: 16px;
+  width: 33%;
 }
 
 .App {
@@ -63,7 +61,6 @@ input {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
