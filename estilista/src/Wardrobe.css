@@ -6,10 +6,16 @@ p {
 
 .titleBlock {
   color: black;
+  display: inline;
 }
 
 .titleBlock h3 {
-  margin: 0;
+  margin: 15px;
+}
+
+.addIcon {
+  max-height: 3vmin;
+  opacity: 0.8;
 }
 
 .unselectedIcon {
@@ -17,7 +23,8 @@ p {
 }
 
 .clothingType img {
-  max-width: 10vmin;
+  max-width: 8vmin;
+  padding: 10px;
 }
 
 .clothesList img {

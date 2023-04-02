@@ -34,9 +34,8 @@ function Wardrobe() {
 
       <div className="titleBlock">
         <h3>
-          Your Wardrobe
+          Your Wardrobe <img src={addIcon} className="addIcon"/>
         </h3>
-        {/* <img src={addIcon}/> */}
       </div>
 
       <div className="clothingType">
@@ -89,13 +88,15 @@ function Wardrobe() {
             <td>
               <img src={shirt8} className="shirt"/>
             </td>
-            <td></td>
+            <td>
+              {/* Blank cell */}
+            </td>
           </tr>
         </table>
       </div>
 
       <div className="footer">
-        <FaHome class="footerIcon" onClick={ ()=> navigate('/feed') }/> <FaSearch class="footerIcon unselectedIcon" onClick={ ()=> navigate('/outfits') }/> <FaTshirt class="footerIcon unselectedIcon" onClick={ ()=> navigate('/wardrobe') }/>
+        <FaHome class="footerIcon unselectedIcon" onClick={ ()=> navigate('/feed') }/> <FaSearch class="footerIcon unselectedIcon" onClick={ ()=> navigate('/outfits') }/> <FaTshirt class="footerIcon" onClick={ ()=> navigate('/wardrobe') }/>
       </div>
     </div>
   );
