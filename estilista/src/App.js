@@ -5,7 +5,7 @@ import Login from './Login';
 import Feed from './Feed';
 import Outfits from './Outfits';
 import View from './View';
-import Wardrobe from './View';
+import Wardrobe from './Wardrobe';
 
 function App() {
   return (

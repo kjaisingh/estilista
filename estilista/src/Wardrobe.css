@@ -8,6 +8,28 @@ input {
   width: 300px;
 }
 
+.clothingType img {
+  max-width: 10vmin;
+}
+
+.clothesList img {
+  max-width: 30%;
+  max-height: 30%;
+}
+
+.clothesList table, .clothesList td, .clothesList tr {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+.clothesList tr {
+  height: 30%;
+}
+
+.clothesList td {
+  width: 30%;
+}
+
 .roundButton {
   border: none;
   background-color: white;
