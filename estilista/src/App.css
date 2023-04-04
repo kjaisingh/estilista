@@ -11,7 +11,12 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-radius: 1em;
+  overflow: hidden;
+  width: 100%;
 }
+
+
 
 .captionText {
   font-weight: light;

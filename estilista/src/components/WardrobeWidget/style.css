@@ -1,0 +1,48 @@
+.tab-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+
+    border: 1px solid #ccc;
+}
+
+
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.tab.active {
+    background-color: #e1e1e1;
+}
+
+/* Clothing item display styling */
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.clothing-item {
+    flex: 0 1 calc(33.33% - 20px);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.clothing-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.plus-icon {
+    font-size: 3em;
+}

@@ -1,0 +1,120 @@
+.outfit-window {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-gap: 50px;
+    margin-top: 15px;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.outfit-page-window {
+    width: 3fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.header-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    padding: 5%;
+    padding-top: 0%;
+    color: #E86252;
+    font-size: 2em;
+    align-items: center;
+}
+
+.header-angle-left {
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+.header-menu-icon {
+    margin-left: auto;
+    margin-top: 15px;
+}
+
+
+.header-center-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    width: max-content;
+}
+
+.header-center-container input {
+    border: none;
+
+    outline: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    width: fit-content;
+    font-size: 1em;
+    color: #E86252;
+    margin-top: 10%;
+}
+
+.outfit-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.outfit-image-wrapper img {
+    width: 90%;
+}
+
+
+/*
+    SELECTED ITEMS
+*/
+
+.items-selection-window {
+    max-width: 400px;
+    color: #E86252;
+    padding: 2%;
+
+    margin-top: 15px;
+}
+
+.selected-items-widget-window {
+    width: minmax(400px, 40%);
+}
+
+.selected-items-flex-container {
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    height: minmax(300px, 40%);
+    overflow: auto;
+}
+
+.selected-clothing-item {
+    max-width: 200px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+}
+
+.selected-clothing-item img {
+    width: 100px;
+    height: auto;
+}
+
+.unselect-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
