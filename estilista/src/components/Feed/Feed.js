@@ -45,7 +45,9 @@ function Feed(props) {
 
     return (
         <div className='feed-window'>
-            <h2 className='section-title'>Feed</h2>
+            <div className="section-title-container">
+                <h2 className='section-title'>Feed</h2>
+            </div>
 
             <div className="feed-flex-container">
                 {posts.map(post =>
