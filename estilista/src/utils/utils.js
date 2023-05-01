@@ -30,4 +30,9 @@ const default_outfit = {
     "channel_id": "new channel id"
 }
 
-module.exports = { casual_outfit, default_outfit, socketPort, socketURL };
+module.exports = {
+    casual_outfit,
+    default_outfit,
+    socketPort,
+    socketURL
+};

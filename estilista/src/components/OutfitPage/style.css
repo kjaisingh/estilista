@@ -35,6 +35,7 @@
 .header-menu-icon {
     margin-left: auto;
     margin-top: 15px;
+    margin-right: 10px;
 }
 
 
@@ -64,13 +65,58 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 95%;
 }
 
 .outfit-image-wrapper img {
     width: 90%;
 }
 
+.active-users-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.active-users-container span {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.active-users-pop-up-container {
+    position: absolute;
+    top: 2rem;
+    left: 20rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.active-users-pop-up-container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.active-users-pop-up-container ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.active-users-pop-up-container li {
+    margin-left: 0.5rem;
+}
+
+.active-users-pop-up-container button {
+    margin-top: 1rem;
+    color: white;
+    background-color: #E86252;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
 
 /*
     SELECTED ITEMS
@@ -81,8 +127,70 @@
     color: #E86252;
     padding: 2%;
 
-    margin-top: 15px;
+    margin-top: 40px;
 }
+
+.context-input-window {
+
+    color: #E86252;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.context-input-window input {
+
+    color: #E86252;
+    padding: 5px;
+    margin-right: 10px;
+    box-sizing: content-box;
+    border: 2px solid #E86252;
+    border-radius: 5px;
+
+}
+
+.context-input-window input:focus {
+    outline: none;
+}
+
+.context-input-window input::placeholder {
+    color: #E86252;
+    font-weight: 500;
+    font-style: italic;
+}
+
+
+.context-input-window-button {
+    color: white;
+    background-color: #E86252;
+
+    font-weight: 600;
+
+    border: 3px solid #E86252;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.context-input-window-button:hover {
+    color: #E86252;
+    background-color: white;
+}
+
+.spin {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 .selected-items-widget-window {
     width: minmax(400px, 40%);
