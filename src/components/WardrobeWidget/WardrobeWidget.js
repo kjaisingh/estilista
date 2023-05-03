@@ -55,6 +55,13 @@ function WardrobeWidget(props) {
     };
 
     const handleItemClick = (item) => {
+        if (!props.selectedItems) return;
+        // Check against duplicates
+        for (let i = 0; i < props.selectedItems.length; i++) {
+            if (props.selectedItems[i].name === item.name) {
+                return;
+            }
+        }
         props.setSelectedItems([...props.selectedItems, item]);
     }
 
