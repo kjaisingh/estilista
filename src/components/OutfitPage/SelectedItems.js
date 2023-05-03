@@ -1,10 +1,5 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React from 'react';
 
-import { useNavigate } from 'react-router-dom';
-import './style.css';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -18,10 +13,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 function SelectedItemsWidget({ selectedItems, setSelectedItems }) {
 
     const handleItemClick = (item) => {
-        console.log("runs");
         setSelectedItems(selectedItems.filter((selectedItem) => selectedItem.id !== item.id));
     };
 
+    console.log(selectedItems);
 
     return (
         <div className="selected-items-container">

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faPen, faSliders } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faPen } from '@fortawesome/free-solid-svg-icons'
 import WardrobeWidget from '../WardrobeWidget/WardrobeWidget';
 import SelectedItemsWidget from './SelectedItems';
 import ContextInput from './ContextInput';
@@ -40,20 +40,23 @@ const mock_data = {
 }
 
 // Set props username to random guest
-const username = "GUEST-" + Math.floor(Math.random() * 1000).toString();
 
 function OutfitPage(props) {
+
+
+    const username = props.username;
 
     const navigate = useNavigate();
     const [isEditingName, setIsEditingName] = useState(false);
     const [outfitName, setOutfitName] = useState("");
+    const [outfitNamePlaceholder, setOutfitNamePlaceholder] = useState("");
     const [outfitImage, setOutfitImage] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
     const [lock, setLock] = useState(false);
 
     const [activeUsers, setActiveUsers] = useState([username]);
+    const [userRender, setUserRender] = useState(false);
 
-    const [isLoadingRender, setIsLoadingRender] = useState(false);
 
     useEffect(() => {
         setOutfitName(mock_data["casual"]["name"]);
@@ -88,9 +91,13 @@ function OutfitPage(props) {
         newSocket.onmessage = async function (event) {
 
             const messageString = await event.data;
-            console.log(messageString);
+            console.log("RECEIVED", messageString);
             const messageObject = JSON.parse(messageString);
 
+            // Set image to render if another user made it start rendering
+            if (messageObject.user_render) {
+                return setUserRender(messageObject.user_render);
+            }
             // Update list of connected users
             if (messageObject.active_users) {
                 return setActiveUsers(messageObject.active_users);
@@ -98,7 +105,7 @@ function OutfitPage(props) {
 
             // Handle image render
             if (messageObject.render_img) {
-                setIsLoadingRender(false);
+                setUserRender(null);
                 return setOutfitImage(messageObject.render_img);
             }
 
@@ -106,6 +113,9 @@ function OutfitPage(props) {
             if (messageObject.selected_items) {
                 setSelectedItems(messageObject.selected_items);
                 console.log("Updated selected items");
+                if (messageObject.rendered_image) {
+                    setOutfitImage(messageObject.rendered_image);
+                }
                 setLock(true);
             }
         };
@@ -117,12 +127,6 @@ function OutfitPage(props) {
     }, [outfitName]);
 
     useEffect(() => {
-
-        if (outfitImage === "https://drive.google.com/uc?id=1japJH5PYA0oXwZFKg3pHDU1pWlpyLS0n&export=download") {
-            setOutfitImage(mock_data["casual"]["image"]);
-        } else {
-            setOutfitImage("https://drive.google.com/uc?id=1japJH5PYA0oXwZFKg3pHDU1pWlpyLS0n&export=download");
-        }
         // Lock avoids Re-echoing of messages
         if (lock) {
             setLock(false);
@@ -142,22 +146,26 @@ function OutfitPage(props) {
 
     function handleRenderSubmit(prompt_context) {
         const message = { "outfit_id": outfitName, "is_render": true }
+        if (props.profile_img) message["profile_img"] = props.profile_img;
         if (prompt_context) message.prompt_context = prompt_context;
+
         if (socket) socket.send(JSON.stringify(message));
-        setIsLoadingRender(true);
+        setUserRender(username);
         console.log(`Sent ${JSON.stringify(message)} to server`);
     }
 
     function handleTitleChange(event) {
-        setOutfitName(event.target.value);
+        setOutfitNamePlaceholder(event.target.value);
     }
 
     function handleTitleBlur() {
         setIsEditingName(false);
-        // Add change to login
+        setOutfitName(outfitNamePlaceholder);
+        setOutfitNamePlaceholder("");
     }
 
     function handleTitleClick() {
+        setOutfitNamePlaceholder(outfitName);
         setIsEditingName(true);
     }
 
@@ -172,7 +180,7 @@ function OutfitPage(props) {
                         {isEditingName ? (
                             <input
                                 type="text"
-                                value={outfitName}
+                                value={outfitNamePlaceholder}
                                 onChange={handleTitleChange}
                                 onBlur={handleTitleBlur}
                                 autoFocus
@@ -194,7 +202,7 @@ function OutfitPage(props) {
             </div>
             <div className='items-selection-window'>
                 <div className='context-input-window'>
-                    <ContextInput onSubmit={handleRenderSubmit} isLoading={isLoadingRender} />
+                    <ContextInput onSubmit={handleRenderSubmit} userRender={userRender} />
                 </div>
                 <div className='selected-items-window'>
                     <SelectedItemsWidget selectedItems={selectedItems} setSelectedItems={setSelectedItems} />

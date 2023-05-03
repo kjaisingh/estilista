@@ -42,6 +42,19 @@ async function runWebSocketServer() {
                     socket_to_username_map.set(socket, data.username);
                     if (broadcastActiveUsers(channel, socket_to_username_map))
                         console.log("User " + data.username + " joined channel " + channel.outfit_id);
+
+                    if (channel.outfit_data && channel.outfit_data.selected_items) {
+                        console.log(`Sent ${channel.outfit_id} selected items message to ${data.username}`);
+                        let selected_items_message_JSON = { "selected_items": channel.outfit_data.selected_items };
+                        if (channel.last_rendered_image)
+                            selected_items_message_JSON["rendered_image"] = channel.last_rendered_image;
+                        socket.send(JSON.stringify(selected_items_message_JSON));
+                    }
+                    if (channel.user_render) {
+                        console.log(`Sent user render message to ${data.username}`);
+                        socket.send(JSON.stringify({ "user_render": channel.user_render }));
+                    }
+
                     return;
                 }
 
@@ -51,10 +64,10 @@ async function runWebSocketServer() {
                     if (!channel)
                         return sendErrorToClient(socket, "ERROR: Channel " + data.outfit_id + " does not exist in memory");
                     // Get Midjourney Prompt
-                    const prompt = getMidjourneyPrompt(data.prompt_context, channel);
+                    const prompt = getMidjourneyPrompt(data.prompt_context, data.profile_img, channel);
                     // Check cache to see if image has already been rendered
                     if (channel.job_prompt && channel.job_prompt === prompt && channel.last_rendered_image) {
-                        const render_img_message_JSON = { "outfit_id": channel.outfit_id, "render_img": value.url };
+                        const render_img_message_JSON = { "outfit_id": channel.outfit_id, "render_img": channel.last_rendered_image };
                         if (broadcastJSON(channel, null, render_img_message_JSON))
                             console.log(`Successfully updated ${channel.outfit_id}'s image with CACHED Midjourney Render`);
                         return;
@@ -64,7 +77,13 @@ async function runWebSocketServer() {
                     const generalDiscordChannel = discord_bot.channels.cache.find(channel => channel.name === 'general');
                     generalDiscordChannel.send(prompt);
                     console.log(`Sent job for channel ${channel.outfit_id}: ${channel.job_prompt}`);
-                    return;
+                    // Set is rendering to true
+                    const username = socket_to_username_map.get(socket);
+                    channel["user_render"] = username;
+                    console.log(`Channel ${channel.outfit_id} has user render ${channel.user_render}`);
+                    // Broadcast rendering status to other users
+                    const is_render_message_JSON = { "user_render": username };
+                    return broadcastJSON(channel, socket, JSON.stringify(is_render_message_JSON));
                 }
 
                 // If message contains channel attribute
@@ -92,7 +111,7 @@ async function runWebSocketServer() {
 
             } catch (error) {
                 console.error('Failed to parse message as JSON:', message);
-                console.log("ERROR: " + error);
+                console.log("ERROR: " + error, error);
             }
         });
 
@@ -138,6 +157,8 @@ discord_bot.on("messageCreate", async (message) => {
                 const render_img_message = { "outfit_id": channel.outfit_id, "render_img": value.url };
                 // Add rendered image to cache
                 channel.last_rendered_image = value.url;
+                // Set is rendering to false
+                channel.user_render = false;
                 if (broadcastJSON(channel, null, render_img_message))
                     console.log(`Successfully updated ${channel.outfit_id}'s image with Midjourney Render`);
                 return;
