@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login'
 import Feed from './components/Feed/Feed';
 import ClosetPage from './components/ClosetPage/ClosetPage';
-import Wardrobe from './Wardrobe';
 import OutfitListing from './components/OutfitListing/OutfitListing';
 import OutfitPage from './components/OutfitPage/OutfitPage';
 import NavBar from './components/NavBar/NavBar';
@@ -35,7 +34,6 @@ function App() {
           <Route exact path="/outfits" element={<OutfitListing />} />
           <Route exact path="/closet" element={<ClosetPage />} />
 
-          <Route exact path="/wardrobe" element={<Wardrobe />} />
           <Route exact path="/home" element={<OutfitListing />} />
           <Route exact path="/outfit" element={<OutfitPage />} />
 

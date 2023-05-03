@@ -6,7 +6,7 @@ const WebSocket = require('ws');
 const { socketPort, casual_outfit, default_outfit } = require('../src/utils/utils');
 const { broadcastJSON, broadcastActiveUsers, sendErrorToClient, getMidjourneyPrompt } = require('./serverUtils');
 const discord_bot = require('./bot');
-const { channelLink } = require('discord.js');
+
 
 // ACTIVE OUTFITS
 const channels = [

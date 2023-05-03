@@ -24,10 +24,7 @@ discord_bot.on('error', error => {
     console.error(`An error occurred: ${error}`);
 });
 
-
-const token = "MTEwMjM4MjY5NTUxMTc2OTIwOA.GH46ri.LNyREoWoFd1-GR7SVZ_goItG7XOvdV8JwqJnZU";
-discord_bot.login(token);
+discord_bot.login(process.env.DISCORD_TOKEN);
 
 
 module.exports = discord_bot;
-
