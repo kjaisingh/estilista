@@ -75,7 +75,7 @@ function OutfitPage(props) {
     useEffect(() => {
         // If the outfit name is not set, return
         if (!outfitName) return;
-        const newSocket = new WebSocket(`${socketURL}:${socketPort}`);
+        const newSocket = new WebSocket(`ws://estilista.herokuapp.com`);
 
         newSocket.onopen = () => {
             console.log('WebSocket connection opened');
