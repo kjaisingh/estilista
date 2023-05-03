@@ -73,7 +73,7 @@ async function runWebSocketServer() {
                         return;
                     }
                     // Add prompt to channel - Trim addition of /imagine
-                    channel.job_prompt = prompt.substring(9);
+                    channel["job_prompt"] = prompt.substring(9);
                     const generalDiscordChannel = discord_bot.channels.cache.find(channel => channel.name === 'general');
                     generalDiscordChannel.send(prompt);
                     console.log(`Sent job for channel ${channel.outfit_id}: ${channel.job_prompt}`);
@@ -175,7 +175,7 @@ discord_bot.on("messageCreate", async (message) => {
 
             const job_id = message.content.substring(start_job_id, end_job_id);
             channel.job_id = job_id;
-            console.log("Updated prompt " + channel.job_prompt + " to job id: " + job_id);
+            console.log("Updated prompt to job id: " + job_id);
             return;
 
         }

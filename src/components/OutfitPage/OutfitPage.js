@@ -156,12 +156,14 @@ function OutfitPage(props) {
 
     function handleTitleChange(event) {
         setOutfitNamePlaceholder(event.target.value);
+
     }
 
     function handleTitleBlur() {
         setIsEditingName(false);
         setOutfitName(outfitNamePlaceholder);
         setOutfitNamePlaceholder("");
+        setUserRender(null);
     }
 
     function handleTitleClick() {
