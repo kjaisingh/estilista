@@ -29,11 +29,12 @@ const sendErrorToClient = (socket, error_message) => {
     socket.send(JSON.stringify(error_json));
 }
 
-const getMidjourneyPrompt = (prompt_context, channel) => {
+const getMidjourneyPrompt = (prompt_context, user_profile_img, channel) => {
     const item_urls = Array.from(channel.outfit_data.selected_items).map(item => item.img).join(' ');
     const item_weights = Array.from(channel.outfit_data.selected_items).map(_ => "--iw 1.5").join(' ');
-    const prompt_context_string = prompt_context ? " " + prompt_context.trim() : '';
-    let prompt = `/imagine ${item_urls} Individual wearing all clothing items provided. Full body realistic render. Frontal perspective with high resolution.${prompt_context || ''} ${item_weights} --version 5`;
+    const prompt_context_string = prompt_context ? prompt_context.trim() + " " : '';
+    const profile_img_string = user_profile_img ? user_profile_img + " " : '';
+    let prompt = `/imagine ${profile_img_string}${item_urls} Individual wearing all clothing items provided. Full body, 8k quality, hyper-realistic render. Canon EOS R6 Mark II Mirrorless Camera. Include full background. ${user_profile_img ? "Show full face. " : ""}Frontal perspective. ${prompt_context_string}${item_weights} --version 5`;
     return prompt;
 }
 

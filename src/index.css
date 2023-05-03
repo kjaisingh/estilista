@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: auto;
 }
 
 code {
@@ -14,4 +15,9 @@ code {
 
 .section-title {
   margin-left: 100px;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

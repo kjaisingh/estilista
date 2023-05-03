@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 
-function ContextInput({ onSubmit, isLoading }) {
+function ContextInput({ onSubmit, userRender }) {
     const [value, setValue] = useState('');
 
     const handleSubmit = (event) => {
@@ -16,9 +16,9 @@ function ContextInput({ onSubmit, isLoading }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={value} onChange={handleChange} placeholder={isLoading ? 'Hang Tight. We are rendering your outfit...' : 'Add extra context for your render!'} disabled={isLoading} />
+            <input type="text" value={value} onChange={handleChange} placeholder={userRender ? `${userRender} started a new job. Hang tight...` : 'Add extra context for your render!'} disabled={userRender} />
             <button className="context-input-window-button" type="submit">
-                {isLoading ? <FaSpinner className="spin" /> : "Render"}
+                {userRender ? <FaSpinner className="spin" /> : "Render"}
             </button>
         </form>
     );

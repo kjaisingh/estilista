@@ -39,8 +39,11 @@ input {
 }
 
 .App-logo {
-    height: 30vmin;
+    width: 80%;
     pointer-events: none;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
 }
 
 .App-header {

@@ -24,7 +24,7 @@ function NavBar(props) {
                 onClick={() => handleClick('Home')} ><i className="fa fa-home"></i></a>
             <a href="/feed" className={`${selectedItem === 'Feed' && 'selected'}`}
                 onClick={() => handleClick('Feed')}><i className="fa fa-compass"></i></a>
-            <a href="/" className={`${selectedItem === 'Marketplace' && 'selected'}`}
+            <a href="/shop" className={`${selectedItem === 'Marketplace' && 'selected'}`}
                 onClick={() => handleClick('Marketplace')}><i className="fa fa-shopping-bag"></i></a>
             <a href="/closet" className={`${selectedItem === 'Closet' && 'selected'}`}
                 onClick={() => handleClick('Closet')}><i><TbHanger /></i> </a>

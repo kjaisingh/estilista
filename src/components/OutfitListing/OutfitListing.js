@@ -50,12 +50,12 @@ const mock_outfits = [
         "is_shared": false
     },
     {
-        "title": "My Outfit",
+        "title": "Tuesday Night",
         "img": "https://drive.google.com/uc?export=view&id=1DGv2BRKvW9LJtk0EtsLky45R71_0sUKS",
         "is_shared": false
     },
     {
-        "title": "My Outfit",
+        "title": "Sunday's BBQ",
         "img": "https://drive.google.com/uc?export=view&id=1DGv2BRKvW9LJtk0EtsLky45R71_0sUKS",
         "is_shared": true
     },
